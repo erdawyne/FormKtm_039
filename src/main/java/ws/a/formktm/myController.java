@@ -33,7 +33,7 @@ public class myController {
     
             text = textProcess(text);
     
-            "<br><img src='data:image/jpeg;base64,"+blob+"  '/><br>"+return text;
+            return text+"<br><img src='data:image/jpeg;base64,"+blob+"  '/><br>";
             
         }
            
