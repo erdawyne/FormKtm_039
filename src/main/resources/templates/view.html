@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>K T M</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <style>
+            fieldset{
+                width:400;
+                height: 270px;
+                background-color: #6495ED;
+            }
+            </style>
+            
+     
+    <center><h3>Kartu Tanda Mahasiswa</h3></center>
+    <hr>
+    <center>
+        <img th:src="${gambar}" style="width: 150px; height: 200px;"/>
+    </center>
+    <br><br/><br/>
+    <center><l th:text="${nama}"></l></center>
+    <br/>
+    <center><l th:text="${nim}"></l></center>
+    <br/>
+    <center><l th:text="${prodi}"></l></center>
+    <br/>
+    <center><l th:text="${email}"></l></center>
+    
+    </body>
+</html>

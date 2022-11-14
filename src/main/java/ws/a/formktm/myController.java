@@ -9,6 +9,7 @@ package ws.a.formktm;
 import java.io.IOException;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,30 +23,28 @@ import org.springframework.web.multipart.MultipartFile;
 public class myController {
     
     @RequestMapping ("/identitas")
-    @ResponseBody
+    //@ResponseBody
     public String getData
         (@RequestParam("gambar") MultipartFile gambar,
-            @RequestParam("nama+prodi+email") String text,
-            @RequestParam("nim") String number)
+            @RequestParam("nama") String text,
+            @RequestParam("nim") String number,
+            @RequestParam("prodi") String prodi,
+            @RequestParam("email") String email,
+            Model paket )
             throws IOException{
             
             String blob = Base64.encodeBase64String(gambar.getBytes());
-    
-            text = textProcess(text);
-    
-            return text+"<br><img src='data:image/jpeg;base64,"+blob+"  '/><br>";
+            
+            String isigambar = "data:image/*;base64, "+blob+" ";
+            
+            paket.addAttribute("gambar", isigambar);
+            paket.addAttribute("nama", text);
+            paket.addAttribute("nim", number);
+            paket.addAttribute("prodi", prodi);
+            paket.addAttribute("email", email);
+            
+            return "view";
             
         }
            
-    
-       
-    private String textProcess(String nama) {
-    String result = "";
-    if (nama.equals("Erda")) {result = nama +"Mahasiswa TI";}
-        else if(nama.equals("Wyne")) {result = nama + "Mahasiswa";}
-        else if(nama.equals("Astuti")) {result = nama + "Mahasiswa";}
-        else {result = nama + "cakep amat";
-        }
-        return result;
-    }
 }
